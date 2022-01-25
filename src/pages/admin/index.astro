@@ -1,0 +1,16 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+---
+<html lang="en">
+<head>
+  <BaseHead
+    title="Content Manager"
+    description="Web admin page for managing website content"
+    permalink={Astro.request.canonicalURL.href}
+  />
+</head>
+<body>
+  <!-- Include the script that builds the page and powers Netlify CMS -->
+  <script type="module" src={Astro.resolve('./cms.tsx')}></script>
+</body>
+</html>
