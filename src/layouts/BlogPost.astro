@@ -1,6 +1,7 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import BlogHeader from '../components/BlogHeader.astro';
+import BlogFooter from '../components/BlogFooter.astro';
 import { Post } from '../collections/posts';
 
 const { content } = Astro.props;
@@ -19,5 +20,6 @@ const { title, description, publishDate, author, heroImage, permalink, alt } = c
 				<slot />
 			</Post>
 		</div>
+		<BlogFooter />
 	</body>
 </html>
