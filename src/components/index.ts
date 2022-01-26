@@ -1,18 +1,19 @@
-// This file should export all components that a blog post might need.
-// Blog posts will `import { Author, ...etc } from 'here'`.
-
 import Author, { CMSAuthor } from './Author';
 import type { CMSComponent } from './types';
 
+/**
+ * This map contains all components that a blog post might use.
+ * It is imported in the `setup` block of each post’s front matter.
+ */
 const Components = {
   Author,
 };
 export default Components;
 
 /**
- * This map should contain all components that a blog post might need.
+ * This map contains the same components paired with a config object.
  * Each component included will be available in the CMS editor as a custom
- * widget. A CMSComponent includes the React component itself as well as
+ * widget. A `CMSComponent` includes the React component itself as well as
  * a list of fields that the component expects to receive from the CMS.
  *
  * See the `<Author />` component for an example.

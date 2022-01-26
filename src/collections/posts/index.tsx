@@ -102,6 +102,9 @@ const collection: CMSCollection<Props> = {
       label: 'Hero Image Alt Text',
       required: false,
     },
+    // This is hidden here assuming a non-technical user will not need to
+    // see or edit the `setup` front matter. You could also use a `code`
+    // widget if you wanted direct access to editing the `setup` for each post.
     {
       name: 'setup',
       widget: 'hidden',
