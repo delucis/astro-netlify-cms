@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import Author from '../../components/Author';
-import { FrontMatterSetup } from '../../components/cms';
+import { FrontMatterSetup } from '../../components';
 import { CMSCollection } from '../types';
 import css from './posts.css';
 
@@ -105,7 +105,8 @@ const collection: CMSCollection<Props> = {
     {
       name: 'setup',
       widget: 'hidden',
-      default: FrontMatterSetup,
+      default: `import Layout from '../../layouts/BlogPost.astro';
+${FrontMatterSetup}`,
     },
   ],
 };

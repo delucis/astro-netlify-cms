@@ -1,5 +1,5 @@
 import CMS from 'netlify-cms-app';
-import CMSComponents from '../../components/cms';
+import { CMSComponents } from '../../components';
 import GlobalStyles from '../../styles/blog.css';
 import collections from '../../collections';
 
