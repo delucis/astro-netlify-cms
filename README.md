@@ -9,8 +9,6 @@ It adds:
 - [Local proxy server][proxy] to allow local content updates via the CMS
 - Netlify Identity for authenticating with the admin app
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)][stackblitz]
-
 ## Commands
 
 All commands are run from the root of the project, from a terminal:
@@ -118,12 +116,11 @@ _See `src/components/Author.tsx` for an example._
 2. Write a configuration object detailing the component’s inputs.
 
 3. Add it to the `Components` and `CMSComponents` exports in
-  `src/components/index.ts`.
+   `src/components/index.ts`.
 
 [starter]: astro.new/blog?on=github
 [cms]: https://www.netlifycms.org/
 [proxy]: https://www.netlifycms.org/docs/beta-features/#working-with-a-local-git-repository
-[stackblitz]: https://stackblitz.com/github/delucis/astro-netlify-cms
 [editor-components]: https://www.netlifycms.org/docs/custom-widgets/#registereditorcomponent
 [cms5065]: https://github.com/netlify/netlify-cms/issues/5065
 [astro2474]: https://github.com/withastro/astro/issues/2474
