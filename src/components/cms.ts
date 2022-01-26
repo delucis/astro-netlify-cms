@@ -15,3 +15,15 @@ const CMSComponents: Record<keyof typeof Components, CMSComponent<any>> = {
 };
 
 export default CMSComponents;
+
+/**
+ * String to import all currently known components in setup front matter.
+ * Results in something like:
+ * ```js
+ * import Components from '../../components';
+ * const { Author, CoolComponent } = Components;
+ * ```
+ */
+export const FrontMatterSetup = `import Layout from '../../layouts/BlogPost.astro';
+import Components from '../../components';
+const { ${Object.keys(CMSComponents).join(', ')} } = Components;`;
