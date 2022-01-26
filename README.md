@@ -1,54 +1,129 @@
-# Astro Starter Kit: Blog
+# Astro Blog with Netlify CMS
 
-```
-npm init astro -- --template blog
-```
+This example is based on [the basic Astro blog starter kit][starter].
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
+It adds:
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- [Netlify CMS][cms] dashboard at `/admin`
+- Live preview of posts in Netlify CMS
+- [Local proxy server][proxy] to allow local content updates via the CMS
+- Netlify Identity for authenticating with the admin app
 
-Features:
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)][stackblitz]
 
-- ✅ SEO-friendly setup with canonical URLs and OpenGraph data
-- ✅ Full Markdown support
-- ✅ RSS 2.0 generation
-- ✅ Sitemap.xml generation
+## Commands
 
-## 🚀 Project Structure
+All commands are run from the root of the project, from a terminal:
+
+| Command         | Action                                       |
+| :-------------- | :------------------------------------------- |
+| `npm install`   | Installs dependencies                        |
+| `npm run dev`   | Starts local dev & Netlify CMS proxy servers |
+| `npm run build` | Build your production site to `./dist/`      |
+
+## Considerations
+
+Netlify CMS is a single-page React app. It supports a live preview pane while
+editing posts, but previews must also be React components. This means any
+layouts/components that you want to preview in the CMS must be written using
+React.
+
+We can also get reasonably good preview support for components in Markdown, but
+the same caveat applies: they’ve got to be React components. This project
+[registers them as custom editor components][editor-components].
+
+Astro makes it fairly simple to share our components across the site and in the
+editor previews, but it does mean we opt out of some Astro benefits like
+auto-scoped styles and are forced to use React (at least for things that need
+previewing — this project still uses Astro components for other things).
+
+### Blockers
+
+- Expressions in Markdown, like `{frontmatter.value}` are not supported in live
+  previews. Two blockers from Netlify CMS:
+
+  1. [No support for custom _inline_ preview components][cms5065] (so
+     expressions could work at a block-level, but not in the middle of text).
+
+  2. Editor components can’t access other post data, so it’s not possible to
+     provide variables like `frontmatter` to expressions. (More obviously,
+     APIs like `Astro.request` aren’t available in the browser.)
+
+- Component support in Markdown requires that components are imported in the
+  front matter’s `setup` block. This repository suggests an architecture for
+  providing components to the editor and sets a default `setup` block that
+  imports all currently known components. [A bug][astro2474] in Astro means we
+  can’t (currently) manage with a single `import Components` and then render
+  `<Component.Button>` or `<Component.Whatever>`, but if that is fixed, this
+  step can be more robust.
+
+## Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:
 
 ```
 /
 ├── public/
-│   ├── robots.txt
-│   └── favicon.ico
+│    └── ...
 ├── src/
+│   ├── collections/        # CMS collection configurations
+│   │   └── posts/
 │   ├── components/
-│   │   └── Tour.astro
-│   └── pages/
-│       └── index.astro
+│   │   ├── index.ts        # Export custom CMS editor components
+│   │   └── ...
+│   ├── layouts/
+│   ├── pages/
+│   │   ├── admin/          # Netlify CMS admin dashboard
+│   │   ├── posts/
+│   │   └── ...
+│   └── styles/
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+This follows the same logic as a standard Astro project. The additional details
+are:
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- `src/collections` — This directory exports an array of collection
+  configurations for use by the CMS. Each collection object contains the
+  component used to render a collection item, its CSS, and a configuration
+  object for Netlify CMS, telling it which fields it needs to edit it.
 
-Any static assets, like images, can be placed in the `public/` directory.
+- `src/components/index.ts` — This file similarly exposes components that can
+  be included in Markdown files. That means they also include configuration
+  for what kind of inputs they need.
 
-## 🧞 Commands
+- `src/page/admin` — This directory contains the admin dashboard for Netlify
+  CMS. The `cms.ts` script configures the CMS dynamically based on the
+  components and collections above.
 
-All commands are run from the root of the project, from a terminal:
+### Adding a new collection
 
-| Command           | Action                                       |
-|:----------------  |:-------------------------------------------- |
-| `npm install`     | Installs dependencies                        |
-| `npm run dev`     | Starts local dev server at `localhost:3000`  |
-| `npm run build`   | Build your production site to `./dist/`      |
-| `npm run preview` | Preview your build locally, before deploying |
+_See `src/collections/posts/index.tsx` for an example._
 
-## 👀 Want to learn more?
+1. Create a directory with the name of your collection under `src/collections`.
 
-Feel free to check [our documentation](https://github.com/withastro/astro) or jump into our [Discord server](https://astro.build/chat).
+2. Write a component to render an item in the collection.
+
+3. Export the component, its CSS (if any), and a collection object configuring
+   it for Netlify CMS.
+
+4. Add your collection to the export in `src/collections/index.ts`.
+
+### Adding a new editor component
+
+_See `src/components/Author.tsx` for an example._
+
+1. Create a component.
+
+2. Write a configuration object detailing the component’s inputs.
+
+3. Add it to the `Components` and `CMSComponents` exports in
+  `src/components/index.ts`.
+
+[starter]: astro.new/blog?on=github
+[cms]: https://www.netlifycms.org/
+[proxy]: https://www.netlifycms.org/docs/beta-features/#working-with-a-local-git-repository
+[stackblitz]: https://stackblitz.com/github/delucis/astro-netlify-cms
+[editor-components]: https://www.netlifycms.org/docs/custom-widgets/#registereditorcomponent
+[cms5065]: https://github.com/netlify/netlify-cms/issues/5065
+[astro2474]: https://github.com/withastro/astro/issues/2474
