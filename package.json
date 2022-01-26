@@ -6,7 +6,7 @@
     "dev:astro": "astro dev",
     "dev:cms": "netlify-cms-proxy-server",
     "dev": "run-p dev:**",
-    "start": "astro dev",
+    "start": "npm run dev",
     "build": "astro build",
     "preview": "astro preview"
   },
