@@ -17,7 +17,8 @@ It adds:
 account and set up continuous deployment with Netlify as if by magic. ✨
 
 Once you’ve got the project set up, you do need to
-[activate Netlify Identity in the Netlify UI][identity].
+[activate Netlify Identity in the Netlify UI][identity] and then enable
+[“Git Gateway”][gateway] to allow e-mail/password authentication.
 
 ## Commands
 
@@ -133,6 +134,7 @@ _See `src/components/Author.tsx` for an example._
 [proxy]: https://www.netlifycms.org/docs/beta-features/#working-with-a-local-git-repository
 [deploy]: https://app.netlify.com/start/deploy?repository=https://github.com/delucis/astro-netlify-cms
 [identity]: https://docs.netlify.com/visitor-access/identity/
+[gateway]: https://docs.netlify.com/visitor-access/git-gateway/
 [editor-components]: https://www.netlifycms.org/docs/custom-widgets/#registereditorcomponent
 [cms5065]: https://github.com/netlify/netlify-cms/issues/5065
 [astro2474]: https://github.com/withastro/astro/issues/2474
