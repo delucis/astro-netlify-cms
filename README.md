@@ -9,6 +9,12 @@ It adds:
 - [Local proxy server][proxy] to allow local content updates via the CMS
 - Netlify Identity for authenticating with the admin app
 
+## Quick deploy
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)][deploy]
+
+☝️ Click this button to copy this project to your own GitHub (or GitLab) account and set up continuous deployment with Netlify as if by magic. ✨
+
 ## Commands
 
 All commands are run from the root of the project, from a terminal:
@@ -121,6 +127,7 @@ _See `src/components/Author.tsx` for an example._
 [starter]: astro.new/blog?on=github
 [cms]: https://www.netlifycms.org/
 [proxy]: https://www.netlifycms.org/docs/beta-features/#working-with-a-local-git-repository
+[deploy]: https://app.netlify.com/start/deploy?repository=https://github.com/delucis/astro-netlify-cms
 [editor-components]: https://www.netlifycms.org/docs/custom-widgets/#registereditorcomponent
 [cms5065]: https://github.com/netlify/netlify-cms/issues/5065
 [astro2474]: https://github.com/withastro/astro/issues/2474
