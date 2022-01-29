@@ -13,7 +13,11 @@ It adds:
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)][deploy]
 
-☝️ Click this button to copy this project to your own GitHub (or GitLab) account and set up continuous deployment with Netlify as if by magic. ✨
+☝️ Click this button to copy this project to your own GitHub (or GitLab)
+account and set up continuous deployment with Netlify as if by magic. ✨
+
+Once you’ve got the project set up, you do need to
+[activate Netlify Identity in the Netlify UI][identity].
 
 ## Commands
 
@@ -128,6 +132,7 @@ _See `src/components/Author.tsx` for an example._
 [cms]: https://www.netlifycms.org/
 [proxy]: https://www.netlifycms.org/docs/beta-features/#working-with-a-local-git-repository
 [deploy]: https://app.netlify.com/start/deploy?repository=https://github.com/delucis/astro-netlify-cms
+[identity]: https://docs.netlify.com/visitor-access/identity/
 [editor-components]: https://www.netlifycms.org/docs/custom-widgets/#registereditorcomponent
 [cms5065]: https://github.com/netlify/netlify-cms/issues/5065
 [astro2474]: https://github.com/withastro/astro/issues/2474
