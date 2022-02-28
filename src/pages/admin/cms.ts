@@ -1,7 +1,10 @@
-import CMS from 'netlify-cms-app';
 import { CMSComponents } from '../../components';
 import GlobalStyles from '../../styles/blog.css';
 import collections from '../../collections';
+
+if (!import.meta.env.SSR) initCMS();
+async function initCMS() {
+  const CMS = (await import('netlify-cms-app')).default;
 
 CMS.init({
   config: {
@@ -101,6 +104,7 @@ for (const Name in CMSComponents) {
     },
     toPreview: component,
   });
+}
 }
 
 /**
