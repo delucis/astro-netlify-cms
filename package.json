@@ -8,7 +8,9 @@
     "dev": "run-p dev:**",
     "start": "npm run dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview:astro": "astro preview",
+    "preview:cms": "netlify-cms-proxy-server",
+    "preview": "run-p preview:**"
   },
   "devDependencies": {
     "@astrojs/renderer-react": "^0.5.0",
