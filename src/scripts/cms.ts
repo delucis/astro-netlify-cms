@@ -5,6 +5,7 @@ import collections from '../collections';
 
 CMS.init({
   config: {
+    load_config_file: false,
     backend: {
       name: 'git-gateway',
       branch: 'latest',
