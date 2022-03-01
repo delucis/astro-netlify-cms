@@ -135,7 +135,7 @@ _See `src/components/Author.tsx` for an example._
 3. Add it to the `Components` and `CMSComponents` exports in
    `src/components/index.ts`.
 
-[starter]: astro.new/blog?on=github
+[starter]: https://astro.new/blog?on=github
 [cms]: https://www.netlifycms.org/
 [proxy]: https://www.netlifycms.org/docs/beta-features/#working-with-a-local-git-repository
 [deploy]: https://app.netlify.com/start/deploy?repository=https://github.com/delucis/astro-netlify-cms
