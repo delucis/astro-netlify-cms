@@ -5,13 +5,19 @@ import collections from '../collections';
 
 CMS.init({
   config: {
+    // Don’t try to load config.yml as we’re providing the config below
+    load_config_file: false,
+    // Use Netlify’s “Git Gateway” authentication and target our default branch
     backend: {
       name: 'git-gateway',
       branch: 'latest',
     },
+    // Enable use of the Netlify CMS proxy server when working locally
     local_backend: true,
+    // Configure where our media assets are stored & served from
     media_folder: 'public/assets/blog',
-    public_folder: 'assets/blog',
+    public_folder: '/assets/blog',
+    // Add the collections configured in `src/collections/index.ts`
     collections: collections.map(({ collection }) => collection),
   },
 });
