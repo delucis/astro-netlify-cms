@@ -16,7 +16,7 @@ CMS.init({
     local_backend: true,
     // Configure where our media assets are stored & served from
     media_folder: 'public/assets/blog',
-    public_folder: 'assets/blog',
+    public_folder: '/assets/blog',
     // Add the collections configured in `src/collections/index.ts`
     collections: collections.map(({ collection }) => collection),
   },
