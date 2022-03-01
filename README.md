@@ -76,16 +76,18 @@ Inside of your Astro project, you'll see the following folders and files:
 ├── public/
 │    └── ...
 ├── src/
-│   ├── collections/        # CMS collection configurations
+│   ├── collections/       # CMS collection configurations
 │   │   └── posts/
 │   ├── components/
-│   │   ├── index.ts        # Export custom CMS editor components
+│   │   ├── index.ts       # Export custom CMS editor components
 │   │   └── ...
 │   ├── layouts/
 │   ├── pages/
-│   │   ├── admin/          # Netlify CMS admin dashboard
+│   │   ├── admin/         # Page for the Netlify CMS admin dashboard
 │   │   ├── posts/
 │   │   └── ...
+│   ├── scripts/
+│   │   └── cms.ts         # Script that configures the CMS admin dashboard
 │   └── styles/
 └── package.json
 ```
@@ -102,9 +104,12 @@ are:
   be included in Markdown files. That means they also include configuration
   for what kind of inputs they need.
 
-- `src/page/admin` — This directory contains the admin dashboard for Netlify
-  CMS. The `cms.ts` script configures the CMS dynamically based on the
-  components and collections above.
+- `src/pages/admin/index.astro` — This page serves the admin dashboard for
+  Netlify CMS.
+
+- `src/scripts/cms.ts` — This script is imported by the `/admin` page and
+  configures the CMS dynamically based on the components and collections
+  above.
 
 ### Adding a new collection
 
