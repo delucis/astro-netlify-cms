@@ -2,9 +2,13 @@
 // https://docs.astro.build/reference/configuration-reference
 
 // @ts-check
+import react from '@astrojs/react';
+
 export default /** @type {import('astro').AstroUserConfig} */ ({
-  // Enable the React renderer to support React JSX components.
-  renderers: ['@astrojs/renderer-react'],
+  integrations: [
+    // Enable the React renderer to support React JSX components.
+    react(),
+  ],
 
   buildOptions: {
     // Use the URL provided by Netlify when building there. See:
