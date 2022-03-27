@@ -3,12 +3,12 @@
 
 // @ts-check
 import { defineConfig } from 'astro/config';
-import react from '@astrojs/react';
+import NetlifyCMS from './integrations/netlify-cms';
 
 export default defineConfig({
   integrations: [
-    // Enable the React renderer to support React JSX components.
-    react(),
+    // Enable Netlify CMS integration.
+    NetlifyCMS(),
   ],
 
   buildOptions: {

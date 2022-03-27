@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev:astro": "astro dev",
+    "dev:astro": "astro dev --experimental-integrations",
     "dev:cms": "netlify-cms-proxy-server",
     "dev": "run-p dev:**",
     "start": "npm run dev",
-    "build": "astro build",
+    "build": "astro build --experimental-integrations",
     "preview:astro": "astro preview",
     "preview:cms": "netlify-cms-proxy-server",
     "preview": "run-p preview:**"
