@@ -2,9 +2,10 @@
 // https://docs.astro.build/reference/configuration-reference
 
 // @ts-check
+import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 
-export default /** @type {import('astro').AstroUserConfig} */ ({
+export default defineConfig({
   integrations: [
     // Enable the React renderer to support React JSX components.
     react(),
