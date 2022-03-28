@@ -8,7 +8,15 @@ export default function NetlifyCMS() {
   const NetlifyCMSIntegration: AstroIntegration = {
     name: 'netlify-cms',
     hooks: {
-      'astro:config:setup': ({ injectScript }) => {
+      'astro:config:setup': ({ config, injectScript, updateConfig }) => {
+        updateConfig({
+          buildOptions: {
+            // Default to the URL provided by Netlify when building there. See:
+            // https://docs.netlify.com/configure-builds/environment-variables/#deploy-urls-and-metadata
+            site: config.buildOptions.site || process.env.URL,
+          },
+        });
+
         injectScript('page', `import '${widgetPath}';`);
       },
     },
