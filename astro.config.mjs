@@ -11,9 +11,7 @@ export default defineConfig({
     react(),
   ],
 
-  buildOptions: {
-    // Use the URL provided by Netlify when building there. See:
-    // https://docs.netlify.com/configure-builds/environment-variables/#deploy-urls-and-metadata
-    site: process.env.URL,
-  },
+  // Use the URL provided by Netlify when building there. See:
+  // https://docs.netlify.com/configure-builds/environment-variables/#deploy-urls-and-metadata
+  site: process.env.URL,
 });
