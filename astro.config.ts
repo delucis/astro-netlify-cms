@@ -3,7 +3,7 @@
 
 // @ts-check
 import { defineConfig } from 'astro/config';
-import NetlifyCMS from './integrations/netlify-cms';
+import NetlifyCMS from 'astro-integration-netlify-cms';
 
 export default defineConfig({
   integrations: [

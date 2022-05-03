@@ -1,11 +1,13 @@
 import identity from 'netlify-identity-widget';
 
-identity.on('init', (user) => {
-  if (!user) {
-    identity.on('login', () => {
-      document.location.href = '/admin/';
-    });
-  }
-});
+export function initIdentity(adminPath: string) {
+  identity.on('init', (user) => {
+    if (!user) {
+      identity.on('login', () => {
+        document.location.href = adminPath;
+      });
+    }
+  });
 
-identity.init();
+  identity.init();
+}
