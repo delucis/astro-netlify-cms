@@ -5,7 +5,7 @@ import BlogFooter from '../components/BlogFooter.astro';
 import { Post } from '../collections/posts';
 
 const { content } = Astro.props;
-const { title, description, publishDate, author, heroImage, permalink, alt } = content;
+const { title, description, publishDate, author, authorURL, heroImage, permalink, alt } = content;
 ---
 
 <html lang={content.lang || 'en'}>
@@ -16,7 +16,7 @@ const { title, description, publishDate, author, heroImage, permalink, alt } = c
 	<body>
 		<BlogHeader />
 		<div class="wrapper">
-			<Post {title} {author} {heroImage} {publishDate} {alt}>
+			<Post {title} {author} {authorURL} {heroImage} {publishDate} {alt}>
 				<slot />
 			</Post>
 		</div>

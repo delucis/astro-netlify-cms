@@ -13,7 +13,7 @@
     "preview": "run-p preview:**"
   },
   "devDependencies": {
-    "@astrojs/react": "^0.0.2",
+    "@astrojs/react": "^0.1.1",
     "@types/react": "^17.0.39",
     "astro": "^1.0.0-beta.20",
     "astro-integration-netlify-cms": "file:integrations/netlify-cms",
