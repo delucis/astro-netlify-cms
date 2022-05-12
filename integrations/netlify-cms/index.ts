@@ -1,5 +1,6 @@
 import type { AstroIntegration, AstroUserConfig } from 'astro';
 import type { CmsCollection } from 'netlify-cms-core';
+import { spawn } from 'node:child_process';
 import { resolve } from 'node:path';
 import react from '@astrojs/react';
 import AdminDashboard from './vite-plugin-admin-dashboard';
@@ -16,6 +17,8 @@ interface NetlifyCMSOptions {
 }
 
 export default function NetlifyCMS({ adminPath, collections }: NetlifyCMSOptions) {
+  let proxyServer: ReturnType<typeof spawn>;
+
   const NetlifyCMSIntegration: AstroIntegration = {
     name: 'netlify-cms',
     hooks: {
@@ -38,6 +41,12 @@ export default function NetlifyCMS({ adminPath, collections }: NetlifyCMSOptions
           `import { initIdentity } from '${widgetPath}'; initIdentity('${adminPath}')`
         );
       },
+      'astro:server:start': () => {
+        proxyServer = spawn('netlify-cms-proxy-server', { stdio: 'inherit' });
+      },
+      'astro:server:done': () => {
+        proxyServer.kill();
+      }
     },
   };
   return [react(), NetlifyCMSIntegration];
