@@ -37,6 +37,7 @@ export default defineConfig({
   integrations: [
     NetlifyCMS({
       adminPath: '/admin',
+      collections: [],
     }),
   ],
 });
@@ -52,3 +53,9 @@ You can pass an options object to the integration to configure how it behaves.
 **Default:** `'/admin'`
 
 Determines the route where the Netlify CMS admin dashboard will be available on your site.
+
+#### `collections`
+
+**Type:** `CmsCollection[]`
+
+This is the core of your Netlify CMS configuration and is an array of objects defining the content collections your site has.

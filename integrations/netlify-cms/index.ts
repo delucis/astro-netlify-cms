@@ -1,4 +1,5 @@
 import type { AstroIntegration, AstroUserConfig } from 'astro';
+import type { CmsCollection } from 'netlify-cms-core';
 import { resolve } from 'node:path';
 import react from '@astrojs/react';
 import AdminDashboard from './vite-plugin-admin-dashboard';
@@ -11,9 +12,10 @@ interface NetlifyCMSOptions {
    * @default '/admin'
    */
   adminPath?: string;
+  collections: CmsCollection[];
 }
 
-export default function NetlifyCMS({ adminPath }: NetlifyCMSOptions = {}) {
+export default function NetlifyCMS({ adminPath, collections }: NetlifyCMSOptions) {
   const NetlifyCMSIntegration: AstroIntegration = {
     name: 'netlify-cms',
     hooks: {
@@ -25,7 +27,7 @@ export default function NetlifyCMS({ adminPath }: NetlifyCMSOptions = {}) {
           vite: {
             plugins: [
               ...(config.vite?.plugins || []),
-              AdminDashboard({ adminPath }),
+              AdminDashboard({ adminPath, collections }),
             ],
           },
         };
