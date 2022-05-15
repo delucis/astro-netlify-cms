@@ -1,16 +1,15 @@
-import type { CmsField, CmsCollection } from 'netlify-cms-core';
+import type { CmsField, CmsConfig } from 'netlify-cms-core';
 import CMS from 'netlify-cms-app';
 import { initIdentity } from './identity-widget';
-// import '../../src/scripts/cms';
 
 export default function initCMS({
   adminPath,
-  collections = [],
+  config,
   components = {},
   globalStyles = [],
 }: {
   adminPath: string;
-  collections: CmsCollection[];
+  config: CmsConfig;
   // collections: {
   //   component;
   //   css: string;
@@ -31,18 +30,9 @@ export default function initCMS({
     config: {
       // Don’t try to load config.yml as we’re providing the config below
       load_config_file: false,
-      // Use Netlify’s “Git Gateway” authentication and target our default branch
-      backend: {
-        name: 'git-gateway',
-        branch: 'latest',
-      },
       // Enable use of the Netlify CMS proxy server when working locally
       local_backend: true,
-      // Configure where our media assets are stored & served from
-      media_folder: 'public/assets/blog',
-      public_folder: '/assets/blog',
-      // Add the collections configured in `src/collections/index.ts`
-      collections,
+      ...config,
     },
   });
 

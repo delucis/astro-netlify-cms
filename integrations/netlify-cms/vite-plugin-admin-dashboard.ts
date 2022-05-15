@@ -1,4 +1,4 @@
-import type { CmsCollection } from 'netlify-cms-core';
+import type { CmsCollection, CmsConfig } from 'netlify-cms-core';
 import type { Plugin } from 'vite';
 import * as kleur from 'kleur';
 
@@ -23,12 +23,12 @@ import would happen like styles.
 
 const AdminPage = ({
   adminPath,
-  collections = [],
+  config,
   dashboardPath,
   globalStyles = [],
 }: {
   adminPath: string;
-  collections: CmsCollection[];
+  config: CmsConfig;
   dashboardPath: string;
   globalStyles: Array<[string] | [string, { raw: boolean }]>;
 }) => {
@@ -46,15 +46,16 @@ const AdminPage = ({
   <title>Content Manager</title>
   <meta
     name="description"
-    content="Web admin page for managing website content"
+    content="Admin dahsboard for managing website content"
   />
   <script type="module">
     ${styleImports.join('\n')}
     import init from '${dashboardPath}';
     init({
       adminPath: '${adminPath}',
-      collections: JSON.parse('${JSON.stringify(collections)}'),
+      config: JSON.parse('${JSON.stringify(config)}'),
       globalStyles: [${styles.join(',')}],
+      // components…
     });
   </script>
 </head>
@@ -64,12 +65,14 @@ const AdminPage = ({
 };
 
 export default function AdminDashboardPlugin({
-  adminPath = '/admin',
-  collections,
+  adminPath,
+  config,
 }: {
   adminPath: string;
-  collections: CmsCollection[];
+  config: Omit<CmsConfig, 'load_config_file' | 'local_backend'>;
 }): Plugin {
+  const globalStyles = [];
+
   if (!adminPath.startsWith('/')) {
     throw new Error(
       '`adminPath` option must be a root-relative pathname, starting with "/", got "' +
@@ -107,7 +110,7 @@ export default function AdminDashboardPlugin({
         if (req.url === adminPath || req.url === adminPath + '/') {
           const adminPage = await transformIndexHtml(
             adminPath,
-            AdminPage({ dashboardPath, adminPath, collections })
+            AdminPage({ adminPath, config, dashboardPath, globalStyles })
           );
           res.end(adminPage);
         } else {
@@ -126,7 +129,12 @@ export default function AdminDashboardPlugin({
       this.emitFile({
         type: 'asset',
         fileName: adminPath.replace(/((^\/)|(\/$))/g, '') + '/index.html',
-        source: AdminPage({ adminPath, dashboardPath, collections }),
+        source: AdminPage({
+          adminPath,
+          config,
+          dashboardPath,
+          globalStyles,
+        }),
       });
     },
   };

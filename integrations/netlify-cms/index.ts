@@ -1,5 +1,5 @@
 import type { AstroIntegration, AstroUserConfig } from 'astro';
-import type { CmsCollection } from 'netlify-cms-core';
+import type { CmsConfig } from 'netlify-cms-core';
 import { spawn } from 'node:child_process';
 import { resolve } from 'node:path';
 import react from '@astrojs/react';
@@ -13,10 +13,13 @@ interface NetlifyCMSOptions {
    * @default '/admin'
    */
   adminPath?: string;
-  collections: CmsCollection[];
+  config: Omit<CmsConfig, 'load_config_file' | 'local_backend'>;
 }
 
-export default function NetlifyCMS({ adminPath, collections }: NetlifyCMSOptions) {
+export default function NetlifyCMS({
+  adminPath = '/admin',
+  config: cmsConfig,
+}: NetlifyCMSOptions) {
   let proxyServer: ReturnType<typeof spawn>;
 
   const NetlifyCMSIntegration: AstroIntegration = {
@@ -30,7 +33,7 @@ export default function NetlifyCMS({ adminPath, collections }: NetlifyCMSOptions
           vite: {
             plugins: [
               ...(config.vite?.plugins || []),
-              AdminDashboard({ adminPath, collections }),
+              AdminDashboard({ adminPath, config: cmsConfig }),
             ],
           },
         };
@@ -46,7 +49,7 @@ export default function NetlifyCMS({ adminPath, collections }: NetlifyCMSOptions
       },
       'astro:server:done': () => {
         proxyServer.kill();
-      }
+      },
     },
   };
   return [react(), NetlifyCMSIntegration];
