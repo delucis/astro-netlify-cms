@@ -26,12 +26,18 @@ export default function initCMS({
 }) {
   initIdentity(adminPath);
 
+  // Provide default values given we can make a reasonable guess
+  const mediaDefaults = !config.media_folder
+    ? { media_folder: 'public', public_folder: '/' }
+    : {};
+
   CMS.init({
     config: {
       // Don’t try to load config.yml as we’re providing the config below
       load_config_file: false,
       // Enable use of the Netlify CMS proxy server when working locally
       local_backend: true,
+      ...mediaDefaults,
       ...config,
     },
   });
