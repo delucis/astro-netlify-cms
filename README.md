@@ -11,6 +11,20 @@ to any <a href="https://astro.build/">Astro</a> project
 npm i astro-netlify-cms
 ```
 
+## What is this?
+
+This is an integration for the [Astro](https://astro.build/) site builder,
+which adds support for [Netlify CMS](https://www.netlifycms.org/), an
+open-source, Git-based content management system.
+
+Adding the integration will:
+
+- Add the Netlify CMS dashboard at `/admin` (or another route if you prefer)
+- Inject Netlify’s [Identity Widget](https://github.com/netlify/netlify-identity-widget) across your site to support logging in to the admin app
+- Run a [local proxy server](https://www.netlifycms.org/docs/beta-features/#working-with-a-local-git-repository) in `dev` mode to allow local content updates via the CMS
+
+Usually each of these requires individual set up and configuration. Using this integration, you configure your CMS once in `astro.config.mjs`, sit back, and enjoy!
+
 ## Usage
 
 ### Experimental status
@@ -74,7 +88,31 @@ same options you would use when using Netlify CMS’s `config.yml` file format.
 
 You can see [a full list of configuration options in the Netlify CMS docs](https://www.netlifycms.org/docs/configuration-options/).
 
-At a minimum, you _must_ set the `backend` and `collections` options.
+At a minimum, you _must_ set the `backend` and `collections` options:
+
+```js
+config: {
+  // Use Netlify’s “Git Gateway” authentication and target our default branch
+  backend: {
+    name: 'git-gateway',
+    branch: 'main',
+  },
+  collections: [
+    // Define a blog post collection
+    {
+      name: 'posts',
+      label: 'Blog Posts',
+      folder: 'src/pages/posts',
+      create: true,
+      delete: true,
+      fields: [
+        { name: 'title', widget: 'string', label: 'Post Title' },
+        { name: 'body', widget: 'markdown', label: 'Post Body' },
+      ],
+    },
+  ],
+};
+```
 
 #### `previewStyles`
 
