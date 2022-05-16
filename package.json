@@ -10,7 +10,8 @@
   "exports": {
     ".": "./dist/index.js",
     "./cms": "./dist/cms.js",
-    "./identity-widget": "./dist/identity-widget.js"
+    "./identity-widget": "./dist/identity-widget.js",
+    "./vite-plugin-admin-dashboard": "./dist/vite-plugin-admin-dashboard.js"
   },
   "scripts": {
     "prepack": "tsc"
