@@ -16,5 +16,18 @@
     "cms",
     "astro",
     "netlify-cms"
-  ]
+  ],
+  "dependencies": {
+    "@astrojs/react": "^0.1.2",
+    "@types/react": "^17.0.39",
+    "netlify-cms-app": "^2.15.66",
+    "netlify-cms-proxy-server": "^1.3.23",
+    "netlify-identity-widget": "^1.9.2"
+  },
+  "peerDependencies": {
+    "astro": ">=1.0.0-beta.20"
+  },
+  "devDependencies": {
+    "astro": "^1.0.0-beta.27"
+  }
 }
