@@ -14,11 +14,13 @@ interface NetlifyCMSOptions {
    */
   adminPath?: string;
   config: Omit<CmsConfig, 'load_config_file' | 'local_backend'>;
+  previewStyles?: Array<string | [string] | [string, { raw: boolean }]>;
 }
 
 export default function NetlifyCMS({
   adminPath = '/admin',
   config: cmsConfig,
+  previewStyles = [],
 }: NetlifyCMSOptions) {
   const NetlifyCMSIntegration: AstroIntegration = {
     name: 'netlify-cms',
@@ -31,7 +33,11 @@ export default function NetlifyCMS({
           vite: {
             plugins: [
               ...(config.vite?.plugins || []),
-              AdminDashboard({ adminPath, config: cmsConfig }),
+              AdminDashboard({
+                adminPath,
+                config: cmsConfig,
+                previewStyles,
+              }),
             ],
           },
         };

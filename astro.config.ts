@@ -9,6 +9,10 @@ export default defineConfig({
   integrations: [
     // Enable Netlify CMS integration.
     NetlifyCMS({
+      previewStyles: [
+        'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;700&display=swap',
+        'src/styles/blog.css',
+      ],
       config: {
         // Use Netlify’s “Git Gateway” authentication and target our default branch
         backend: {

@@ -6,7 +6,7 @@ export default function initCMS({
   adminPath,
   config,
   components = {},
-  globalStyles = [],
+  previewStyles = [],
 }: {
   adminPath: string;
   config: CmsConfig;
@@ -22,7 +22,7 @@ export default function initCMS({
       fields: (CmsField & { name: keyof any })[];
     }
   >;
-  globalStyles: Array<[string] | [string, { raw: boolean }]>;
+  previewStyles: Array<[string] | [string, { raw: boolean }]>;
 }) {
   initIdentity(adminPath);
 
@@ -51,13 +51,9 @@ export default function initCMS({
    * The (undocumented?) `raw: true` setting treats the first argument as
    * a raw CSS string to inject instead of as a URL to load a stylesheet from.
    */
-  globalStyles.forEach(([style, opts]) =>
+  previewStyles.forEach(([style, opts]) =>
     CMS.registerPreviewStyle(style, opts)
   );
-  // CMS.registerPreviewStyle(globalStyles, { raw: true });
-  // CMS.registerPreviewStyle(
-  //   'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;700&display=swap'
-  // );
 
   /**
    * Register each of our collections’ preview styles and components.

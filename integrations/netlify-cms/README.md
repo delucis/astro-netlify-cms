@@ -73,3 +73,22 @@ same options you would use when using Netlify CMS’s `config.yml` file format.
 You can see [a full list of configuration options in the Netlify CMS docs](https://www.netlifycms.org/docs/configuration-options/).
 
 At a minimum, you _must_ set the `backend` and `collections` options.
+
+#### `previewStyles`
+
+**Type:** `Array<string | [string, { raw: true }]>`
+
+Sets custom CSS styles to apply in the Netlify CMS preview pane.
+
+You can provide URLs to external CSS stylesheets (Google Fonts for example), paths to local CSS files in your project, or even raw CSS strings:
+
+```js
+previewStyles: [
+  // Path to a local CSS file, relative to your project’s root directory
+  'src/styles/main.css',
+  // A URL to an externally hosted CSS file
+  'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap',
+  // Raw CSS!
+  ['p { color: red; }', { raw: true }],
+];
+```
