@@ -4,7 +4,7 @@ import type { Plugin } from 'vite';
 import { join } from 'node:path';
 import * as kleur from 'kleur';
 
-const dashboardPath = 'astro-netlify-cms/cms.ts';
+const dashboardPath = 'astro-netlify-cms/cms';
 
 const AdminPage = ({
   adminPath,

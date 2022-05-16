@@ -8,8 +8,12 @@
   "license": "MIT",
   "type": "module",
   "exports": {
-    ".": "./integration/index.ts",
-    "./cms.ts": "./integration/cms.ts"
+    ".": "./dist/index.js",
+    "./cms": "./dist/cms.js",
+    "./identity-widget": "./dist/identity-widget.js"
+  },
+  "scripts": {
+    "prepack": "tsc"
   },
   "keywords": [
     "astro-component",
