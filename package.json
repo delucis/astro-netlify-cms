@@ -1,23 +1,33 @@
 {
-  "name": "@example/blog",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "dev:astro": "astro dev",
-    "dev:cms": "netlify-cms-proxy-server",
-    "dev": "run-p dev:**",
-    "start": "npm run dev",
-    "build": "astro build",
-    "preview:astro": "astro preview",
-    "preview:cms": "netlify-cms-proxy-server",
-    "preview": "run-p preview:**"
+  "name": "astro-netlify-cms",
+  "version": "0.0.2",
+  "description": "Add Netlify CMS’s admin dashboard to your Astro project",
+  "repository": "delucis/astro-netlify-cms",
+  "homepage": "https://github.com/delucis/astro-netlify-cms",
+  "author": "delucis",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./integration/index.ts",
+    "./cms.ts": "./integration/cms.ts"
   },
-  "devDependencies": {
-    "@astrojs/react": "^0.1.1",
+  "keywords": [
+    "astro-component",
+    "cms",
+    "astro",
+    "netlify-cms"
+  ],
+  "dependencies": {
+    "@astrojs/react": "^0.1.2",
     "@types/react": "^17.0.39",
-    "astro": "^1.0.0-beta.17",
     "netlify-cms-app": "^2.15.66",
     "netlify-cms-proxy-server": "^1.3.23",
-    "npm-run-all": "^4.1.5"
+    "netlify-identity-widget": "^1.9.2"
+  },
+  "peerDependencies": {
+    "astro": ">=1.0.0-beta.20"
+  },
+  "devDependencies": {
+    "astro": "^1.0.0-beta.27"
   }
 }
