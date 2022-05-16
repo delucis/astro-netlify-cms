@@ -4,7 +4,7 @@ import type { Plugin } from 'vite';
 import { join } from 'node:path';
 import * as kleur from 'kleur';
 
-const dashboardPath = 'astro-integration-netlify-cms/cms.ts';
+const dashboardPath = 'astro-netlify-cms/cms.ts';
 
 const AdminPage = ({
   adminPath,
@@ -171,7 +171,7 @@ interface ImportMap {
  * @returns An object like:
  * ```js
  * {
- *   cms: 'astro-integration-netlify-cms/cms.ts',
+ *   cms: 'astro-netlify-cms/cms.ts',
  *   style__0: '/path/to/project/dir/path/to/style.css',
  * }
  * ```

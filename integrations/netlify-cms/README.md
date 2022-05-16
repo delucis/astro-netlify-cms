@@ -6,7 +6,7 @@ any Astro project.
 ## Installation
 
 ```bash
-npm i astro-integration-netlify-cms
+npm i astro-netlify-cms
 ```
 
 ## Usage
@@ -31,7 +31,7 @@ Astro config file, adding it to the `integrations` array.
 // astro.config.mjs
 
 import { defineConfig } from 'astro/config';
-import NetlifyCMS from 'astro-integration-netlify-cms';
+import NetlifyCMS from 'astro-netlify-cms';
 
 export default defineConfig({
   integrations: [
