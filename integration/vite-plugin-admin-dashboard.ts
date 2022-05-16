@@ -2,7 +2,6 @@ import type { CmsConfig } from 'netlify-cms-core';
 import type { OutputBundle } from 'rollup';
 import type { Plugin } from 'vite';
 import { join } from 'node:path';
-import * as kleur from 'kleur';
 
 const dashboardPath = 'astro-netlify-cms/cms';
 
@@ -145,7 +144,6 @@ export default function AdminDashboardPlugin({
         ({ name }) => name === 'cms'
       );
       if (!dashboardChunk) return;
-      console.log('\n' + kleur.green().inverse(' generating admin dashboard '));
       this.emitFile({
         type: 'asset',
         fileName: adminPath.replace(/((^\/)|(\/$))/g, '') + '/index.html',
