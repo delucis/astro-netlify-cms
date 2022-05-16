@@ -134,3 +134,8 @@ previewStyles: [
   ['p { color: red; }', { raw: true }],
 ];
 ```
+
+## To-do
+
+- Support registering custom preview components to render content as it is edited.
+- Support registering custom block components for use in the Markdown editor.
