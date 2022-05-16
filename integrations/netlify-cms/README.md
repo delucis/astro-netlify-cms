@@ -1,7 +1,7 @@
-# astro-integration-netlify-cms
+![Astro + Netlify CMS](header.png)
 
-This is an experimental way to add Netlify CMS’s admin dashboard to any Astro
-project using Astro’s Integrations API.
+This is an experimental integration that adds Netlify CMS’s admin dashboard to
+any Astro project.
 
 ## Installation
 
