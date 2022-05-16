@@ -1,7 +1,8 @@
 ![Astro + Netlify CMS](header.png)
 
 <p align="center">
-Add Netlify CMS’s admin dashboard to any Astro project.
+Add <a href="https://www.netlifycms.org/">Netlify CMS</a>’s admin dashboard
+to any <a href="https://astro.build/">Astro</a> project
 </p>
 
 ## Installation
