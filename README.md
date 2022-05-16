@@ -25,6 +25,8 @@ Adding the integration will:
 
 Usually each of these requires individual set up and configuration. Using this integration, you configure your CMS once in `astro.config.mjs`, sit back, and enjoy!
 
+> Looking for a quick way to get started? [Try out the Blog Starter with Netlify CMS →](https://github.com/delucis/astro-netlify-cms-starter)
+
 ## Usage
 
 ### Experimental status
