@@ -20,8 +20,6 @@ export default function NetlifyCMS({
   adminPath = '/admin',
   config: cmsConfig,
 }: NetlifyCMSOptions) {
-  let proxyServer: ReturnType<typeof spawn>;
-
   const NetlifyCMSIntegration: AstroIntegration = {
     name: 'netlify-cms',
     hooks: {
@@ -45,10 +43,8 @@ export default function NetlifyCMS({
         );
       },
       'astro:server:start': () => {
-        proxyServer = spawn('netlify-cms-proxy-server', { stdio: 'inherit' });
-      },
-      'astro:server:done': () => {
-        proxyServer.kill();
+        const proxy = spawn('netlify-cms-proxy-server', { stdio: 'inherit' });
+        process.on('exit', () => proxy.kill());
       },
     },
   };
