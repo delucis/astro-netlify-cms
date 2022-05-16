@@ -13,6 +13,7 @@
     "./identity-widget": "./dist/identity-widget.js",
     "./vite-plugin-admin-dashboard": "./dist/vite-plugin-admin-dashboard.js"
   },
+  "types": "./dist/index.d.ts",
   "scripts": {
     "prepack": "tsc"
   },
