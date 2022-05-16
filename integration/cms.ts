@@ -106,27 +106,27 @@ export default function initCMS({
    *     other data types eventually to some degree.
    */
 
-  for (const Name in components) {
-    const { component, fields } = components[Name];
-    CMS.registerEditorComponent({
-      id: Name,
-      label: Name,
-      fields,
-      pattern: new RegExp(`^<${Name} (.*?)/>$`),
-      fromBlock: (match) =>
-        match[1]
-          .split('" ')
-          .map((attr) => attr.split('="'))
-          .reduce((attrs, [attr, val]) => ({ ...attrs, [attr]: val }), {}),
-      toBlock: (obj) => {
-        const attrs = Object.entries(obj)
-          .map(([attr, val]) => `${attr}="${val}"`)
-          .join(' ');
-        return `<${Name} ${attrs} />`;
-      },
-      toPreview: component,
-    });
-  }
+  // for (const Name in components) {
+  //   const { component, fields } = components[Name];
+  //   CMS.registerEditorComponent({
+  //     id: Name,
+  //     label: Name,
+  //     fields,
+  //     pattern: new RegExp(`^<${Name} (.*?)/>$`),
+  //     fromBlock: (match) =>
+  //       match[1]
+  //         .split('" ')
+  //         .map((attr) => attr.split('="'))
+  //         .reduce((attrs, [attr, val]) => ({ ...attrs, [attr]: val }), {}),
+  //     toBlock: (obj) => {
+  //       const attrs = Object.entries(obj)
+  //         .map(([attr, val]) => `${attr}="${val}"`)
+  //         .join(' ');
+  //       return `<${Name} ${attrs} />`;
+  //     },
+  //     toPreview: component,
+  //   });
+  // }
 
   /**
    * Things that would be nice but are currently impossible:
