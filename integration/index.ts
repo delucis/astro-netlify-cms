@@ -40,15 +40,16 @@ export default function NetlifyCMS({
             ],
           },
         };
+
         updateConfig(newConfig);
 
-        injectScript(
+       /*  injectScript(
           'page',
           `import { initIdentity } from '${widgetPath}'; initIdentity('${adminPath}')`
-        );
+        ); */
       },
       'astro:server:start': () => {
-        const proxy = spawn('netlify-cms-proxy-server', { stdio: 'inherit' });
+        const proxy = spawn('netlify-cms-proxy-server', { stdio: 'inherit', , shell: process.platform == 'win32' });
         process.on('exit', () => proxy.kill());
       },
     },
