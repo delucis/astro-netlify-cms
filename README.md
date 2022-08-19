@@ -29,17 +29,6 @@ Usually each of these requires individual set up and configuration. Using this i
 
 ## Usage
 
-### Experimental status
-
-Third-party integrations are currently only supported behind a flag, so you’ll
-need to update your Astro scripts to include the flag:
-
-```bash
-astro dev --experimental-integrations
-astro build --experimental-integrations
-astro preview --experimental-integrations
-```
-
 ### Adding the integration
 
 To add Netlify CMS to your project, import and use the integration in your
