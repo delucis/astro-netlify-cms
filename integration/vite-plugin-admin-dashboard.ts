@@ -9,7 +9,6 @@ const AdminPage = ({
   adminPath,
   assets,
   config,
-  dashboardPath,
   previewStyles = [],
   projectRoot,
 }: {
@@ -17,10 +16,8 @@ const AdminPage = ({
   config: CmsConfig;
   previewStyles: Array<string | [string] | [string, { raw: boolean }]>;
   projectRoot: string;
-} & (
-  | { assets: [id: string, filename: string][]; dashboardPath?: undefined }
-  | { assets?: undefined; dashboardPath: string }
-)) => {
+  assets?: [id: string, filename: string][];
+}) => {
   const imports: string[] = [];
   const styles: string[] = [];
 
@@ -110,7 +107,6 @@ export default function AdminDashboardPlugin({
       ) {
         if (!Array.isArray(input) && typeof input !== 'object') input = [input];
         importMap = generateImportMap({
-          dashboardPath,
           previewStyles,
           projectRoot,
         });
@@ -127,7 +123,6 @@ export default function AdminDashboardPlugin({
             AdminPage({
               adminPath,
               config,
-              dashboardPath,
               previewStyles,
               projectRoot,
             })
@@ -175,11 +170,9 @@ interface ImportMap {
  * ```
  */
 function generateImportMap({
-  dashboardPath,
   previewStyles,
   projectRoot,
 }: {
-  dashboardPath: string;
   previewStyles: Array<string | [string] | [string, { raw: boolean }]>;
   projectRoot: string;
 }): ImportMap {
