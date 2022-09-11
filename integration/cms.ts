@@ -58,9 +58,7 @@ export default function initCMS({
   /**
    * Register each of our collections’ preview styles and components.
    */
-  // collections.forEach(({ component, css, collection }) => {
-  //   CMS.registerPreviewStyle(css, { raw: true });
-
+  // collections.forEach(({ component, collection }) => {
   //   CMS.registerPreviewTemplate(
   //     collection.name,
   //     ({ entry, widgetFor, getAsset }) => {
