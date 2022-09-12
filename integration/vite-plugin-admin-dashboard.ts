@@ -2,6 +2,7 @@ import type { CmsConfig } from 'netlify-cms-core';
 import type { OutputBundle } from 'rollup';
 import type { Plugin } from 'vite';
 import { join } from 'node:path';
+import type { PreviewStyle } from './types';
 
 const dashboardPath = 'astro-netlify-cms/cms';
 
@@ -75,7 +76,7 @@ export default function AdminDashboardPlugin({
 }: {
   adminPath: string;
   config: Omit<CmsConfig, 'load_config_file' | 'local_backend'>;
-  previewStyles: Array<string | [string] | [string, { raw: boolean }]>;
+  previewStyles: PreviewStyle[];
 }): Plugin {
   if (!adminPath.startsWith('/')) {
     throw new Error(

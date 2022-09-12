@@ -1,6 +1,7 @@
 import type { CmsField, CmsConfig } from 'netlify-cms-core';
 import CMS from 'netlify-cms-app';
 import { initIdentity } from './identity-widget';
+import type { NormalizedPreviewStyle } from './types';
 
 export default function initCMS({
   adminPath,
@@ -22,7 +23,7 @@ export default function initCMS({
       fields: (CmsField & { name: keyof any })[];
     }
   >;
-  previewStyles: Array<[string] | [string, { raw: boolean }]>;
+  previewStyles: NormalizedPreviewStyle[];
 }) {
   initIdentity(adminPath);
 
