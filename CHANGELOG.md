@@ -1,5 +1,11 @@
 # astro-netlify-cms
 
+## 0.2.1
+
+### Patch Changes
+
+- [`cb7adcc`](https://github.com/delucis/astro-netlify-cms/commit/cb7adcc8c0a61756817449cf240efacf82cd79c1) Thanks [@delucis](https://github.com/delucis)! - Fix for compression support: end import statements with semi-colons
+
 ## 0.2.0
 
 ### Minor Changes
