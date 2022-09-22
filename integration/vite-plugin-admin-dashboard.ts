@@ -62,7 +62,6 @@ const AdminPage = ({
     adminPath: '${adminPath}',
     config: JSON.parse('${JSON.stringify(config)}'),
     previewStyles: [${styles.join(',')}],
-    // components…
   });
   </script>
   </head>
