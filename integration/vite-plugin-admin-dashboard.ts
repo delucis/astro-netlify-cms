@@ -28,11 +28,11 @@ const AdminPage = ({
       if (name.startsWith('style__')) {
         styles.push(`['/${filename}']`);
       } else {
-        imports.push(`import ${name} from '/${filename}'`);
+        imports.push(`import ${name} from '/${filename}';`);
       }
     }
   } else {
-    imports.push(`import cms from '${dashboardPath}'`);
+    imports.push(`import cms from '${dashboardPath}';`);
   }
 
   previewStyles.forEach((entry, index) => {
@@ -60,7 +60,6 @@ const AdminPage = ({
     adminPath: '${adminPath}',
     config: JSON.parse('${JSON.stringify(config)}'),
     previewStyles: [${styles.join(',')}],
-    // components…
   });
   </script>
   </head>

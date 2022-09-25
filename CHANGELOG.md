@@ -1,5 +1,17 @@
 # astro-netlify-cms
 
+## 0.2.2
+
+### Patch Changes
+
+- [`a7c4e43`](https://github.com/delucis/astro-netlify-cms/commit/a7c4e43511af695b91c0b2b19a750d769d692f98) Thanks [@delucis](https://github.com/delucis)! - Hot fix: remove comment clashing with over-eager whitespace collapsing by astro-compress
+
+## 0.2.1
+
+### Patch Changes
+
+- [`cb7adcc`](https://github.com/delucis/astro-netlify-cms/commit/cb7adcc8c0a61756817449cf240efacf82cd79c1) Thanks [@delucis](https://github.com/delucis)! - Fix for compression support: end import statements with semi-colons
+
 ## 0.2.0
 
 ### Minor Changes
