@@ -1,7 +1,6 @@
 import type { CmsConfig } from 'netlify-cms-core';
 import type { OutputBundle } from 'rollup';
 import type { Plugin } from 'vite';
-import { join } from 'node:path';
 
 const dashboardPath = 'astro-netlify-cms/cms';
 
@@ -11,7 +10,6 @@ const AdminPage = ({
   config,
   dashboardPath,
   previewStyles = [],
-  projectRoot,
 }: {
   adminPath: string;
   config: CmsConfig;
@@ -176,7 +174,6 @@ interface ImportMap {
 function generateImportMap({
   dashboardPath,
   previewStyles,
-  projectRoot,
 }: {
   dashboardPath: string;
   previewStyles: Array<string | [string] | [string, { raw: boolean }]>;
