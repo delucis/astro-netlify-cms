@@ -44,7 +44,7 @@ const AdminPage = ({
       styles.push(JSON.stringify([style, opts]));
     } else if (!assets) {
       const name = `style__${index}`;
-      imports.push(`import ${name} from '${join(projectRoot, style)}';`);
+      imports.push(`import ${name} from '/${style}';`);
       styles.push(`[${name}, { raw: true }]`);
     }
   });
