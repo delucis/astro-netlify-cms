@@ -187,7 +187,7 @@ function generateImportMap({
     if (!Array.isArray(entry)) entry = [entry];
     const [style, opts] = entry;
     if (opts?.raw || style.startsWith('http')) return;
-    imports[`style__${index}`] = join(projectRoot, style);
+    imports[`style__${index}`] = style;
   });
   return imports;
 }
