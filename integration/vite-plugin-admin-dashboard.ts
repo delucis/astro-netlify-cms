@@ -1,7 +1,6 @@
 import type { CmsConfig } from 'netlify-cms-core';
 import type { OutputBundle } from 'rollup';
 import type { Plugin } from 'vite';
-import { join } from 'node:path';
 import type { PreviewStyle } from './types';
 
 const dashboardPath = 'astro-netlify-cms/cms';
@@ -11,12 +10,10 @@ const AdminPage = ({
   assets,
   config,
   previewStyles = [],
-  projectRoot,
 }: {
   adminPath: string;
   config: CmsConfig;
   previewStyles: Array<string | [string] | [string, { raw: boolean }]>;
-  projectRoot: string;
   assets?: [id: string, filename: string][];
 }) => {
   const imports: string[] = [];
@@ -42,7 +39,7 @@ const AdminPage = ({
       styles.push(JSON.stringify([style, opts]));
     } else if (!assets) {
       const name = `style__${index}`;
-      imports.push(`import ${name} from '${join(projectRoot, style)}';`);
+      imports.push(`import ${name} from '/${style}';`);
       styles.push(`[${name}, { raw: true }]`);
     }
   });
@@ -88,15 +85,10 @@ export default function AdminDashboardPlugin({
     adminPath = adminPath.slice(0, -1);
   }
 
-  let projectRoot: string;
   let importMap: ImportMap;
 
   return {
     name: 'vite-plugin-netlify-cms-admin-dashboard',
-
-    configResolved({ root }) {
-      projectRoot = root;
-    },
 
     options(options) {
       let { input } = options;
@@ -108,7 +100,6 @@ export default function AdminDashboardPlugin({
         if (!Array.isArray(input) && typeof input !== 'object') input = [input];
         importMap = generateImportMap({
           previewStyles,
-          projectRoot,
         });
         input = { ...input, ...importMap };
       }
@@ -124,7 +115,6 @@ export default function AdminDashboardPlugin({
               adminPath,
               config,
               previewStyles,
-              projectRoot,
             })
           );
           res.end(adminPage);
@@ -147,7 +137,6 @@ export default function AdminDashboardPlugin({
           assets: collectBundleAssets(bundle, importMap),
           config,
           previewStyles,
-          projectRoot,
         }),
       });
     },
@@ -171,17 +160,15 @@ interface ImportMap {
  */
 function generateImportMap({
   previewStyles,
-  projectRoot,
 }: {
   previewStyles: Array<string | [string] | [string, { raw: boolean }]>;
-  projectRoot: string;
 }): ImportMap {
   const imports: ImportMap = { cms: dashboardPath };
   previewStyles.forEach((entry, index) => {
     if (!Array.isArray(entry)) entry = [entry];
     const [style, opts] = entry;
     if (opts?.raw || style.startsWith('http')) return;
-    imports[`style__${index}`] = join(projectRoot, style);
+    imports[`style__${index}`] = `/${style}`;
   });
   return imports;
 }

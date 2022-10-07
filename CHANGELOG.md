@@ -1,5 +1,11 @@
 # astro-netlify-cms
 
+## 0.2.3
+
+### Patch Changes
+
+- [#23](https://github.com/delucis/astro-netlify-cms/pull/23) [`26243d5`](https://github.com/delucis/astro-netlify-cms/commit/26243d54ebee46122053d315ad929c4636a123e2) Thanks [@codelastnight](https://github.com/codelastnight)! - remove node join() from vite-plugin-admin-dashboard to allow windows to run dev
+
 ## 0.2.2
 
 ### Patch Changes
