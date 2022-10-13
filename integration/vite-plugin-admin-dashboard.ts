@@ -51,7 +51,7 @@ const AdminPage = ({
   <title>Content Manager</title>
   <meta
   name="description"
-  content="Admin dahsboard for managing website content"
+  content="Admin dashboard for managing website content"
   />
   <script type="module">
   ${imports.join('\n')}
