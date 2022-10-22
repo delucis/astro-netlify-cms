@@ -1,23 +1,22 @@
 import type { CmsConfig } from 'netlify-cms-core';
 import type { OutputBundle } from 'rollup';
 import type { Plugin } from 'vite';
+import type { PreviewStyle } from './types';
 
 const dashboardPath = 'astro-netlify-cms/cms';
 
-const AdminPage = ({
+function AdminPage({
   adminPath,
   assets,
   config,
-  dashboardPath,
   previewStyles = [],
 }: {
   adminPath: string;
   config: CmsConfig;
   previewStyles: Array<string | [string] | [string, { raw: boolean }]>;
-} & (
-  | { assets: [id: string, filename: string][]; dashboardPath?: undefined }
-  | { assets?: undefined; dashboardPath: string }
-)) => {
+  /** Array of module ID and filename tuples present only at build time. */
+  assets?: [id: string, filename: string][];
+}) {
   const imports: string[] = [];
   const styles: string[] = [];
 
@@ -65,7 +64,7 @@ const AdminPage = ({
   <body></body>
   </html>
   `;
-};
+}
 
 export default function AdminDashboardPlugin({
   adminPath,
@@ -74,7 +73,7 @@ export default function AdminDashboardPlugin({
 }: {
   adminPath: string;
   config: Omit<CmsConfig, 'load_config_file' | 'local_backend'>;
-  previewStyles: Array<string | [string] | [string, { raw: boolean }]>;
+  previewStyles: PreviewStyle[];
 }): Plugin {
   if (!adminPath.startsWith('/')) {
     throw new Error(
@@ -92,6 +91,7 @@ export default function AdminDashboardPlugin({
   return {
     name: 'vite-plugin-netlify-cms-admin-dashboard',
 
+    /** Build-only Rollup hook. */
     options(options) {
       let { input } = options;
       if (
@@ -101,7 +101,6 @@ export default function AdminDashboardPlugin({
       ) {
         if (!Array.isArray(input) && typeof input !== 'object') input = [input];
         importMap = generateImportMap({
-          dashboardPath,
           previewStyles,
         });
         input = { ...input, ...importMap };
@@ -109,6 +108,7 @@ export default function AdminDashboardPlugin({
       return { ...options, input };
     },
 
+    /** Dev-only Vite hook. */
     configureServer({ transformIndexHtml, middlewares }) {
       middlewares.use(async (req, res, next) => {
         if (req.url === adminPath || req.url === adminPath + '/') {
@@ -117,7 +117,6 @@ export default function AdminDashboardPlugin({
             AdminPage({
               adminPath,
               config,
-              dashboardPath,
               previewStyles,
             })
           );
@@ -128,6 +127,7 @@ export default function AdminDashboardPlugin({
       });
     },
 
+    /** Build-only Rollup hook. */
     generateBundle(options, bundle) {
       const dashboardChunk = Object.values(bundle).find(
         ({ name }) => name === 'cms'
@@ -163,10 +163,8 @@ interface ImportMap {
  * ```
  */
 function generateImportMap({
-  dashboardPath,
   previewStyles,
 }: {
-  dashboardPath: string;
   previewStyles: Array<string | [string] | [string, { raw: boolean }]>;
 }): ImportMap {
   const imports: ImportMap = { cms: dashboardPath };

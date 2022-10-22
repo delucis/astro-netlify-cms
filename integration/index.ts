@@ -3,6 +3,7 @@ import type { CmsConfig } from 'netlify-cms-core';
 import { spawn } from 'node:child_process';
 import react from '@astrojs/react';
 import AdminDashboard from './vite-plugin-admin-dashboard.js';
+import type { PreviewStyle } from './types.js';
 
 const widgetPath = 'astro-netlify-cms/identity-widget';
 
@@ -13,7 +14,7 @@ interface NetlifyCMSOptions {
    */
   adminPath?: string;
   config: Omit<CmsConfig, 'load_config_file' | 'local_backend'>;
-  previewStyles?: Array<string | [string] | [string, { raw: boolean }]>;
+  previewStyles?: PreviewStyle[];
 }
 
 export default function NetlifyCMS({
