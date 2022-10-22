@@ -1,5 +1,11 @@
 # astro-netlify-cms
 
+## 0.2.4
+
+### Patch Changes
+
+- [#25](https://github.com/delucis/astro-netlify-cms/pull/25) [`eba6556`](https://github.com/delucis/astro-netlify-cms/commit/eba65563e2815242877498bf43f8a1d8b3e4f41a) Thanks [@Opposedmatty](https://github.com/Opposedmatty)! - Fix typo in description meta tag
+
 ## 0.2.3
 
 ### Patch Changes
