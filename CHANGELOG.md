@@ -1,5 +1,11 @@
 # astro-netlify-cms
 
+## 0.2.5
+
+### Patch Changes
+
+- [`013a42d`](https://github.com/delucis/astro-netlify-cms/commit/013a42d0e7d656b760283af19422c9602d83a9e3) Thanks [@delucis](https://github.com/delucis)! - Fix preview styles in production builds
+
 ## 0.2.4
 
 ### Patch Changes
