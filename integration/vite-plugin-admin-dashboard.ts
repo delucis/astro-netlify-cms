@@ -127,6 +127,7 @@ export default function AdminDashboardPlugin({
       });
     },
 
+    /** Build-only Rollup hook. */
     generateBundle(options, bundle) {
       const dashboardChunk = Object.values(bundle).find(
         ({ name }) => name === 'cms'
