@@ -5,7 +5,7 @@ import type { PreviewStyle } from './types';
 
 const dashboardPath = 'astro-netlify-cms/cms';
 
-const AdminPage = ({
+function AdminPage({
   adminPath,
   assets,
   config,
@@ -14,8 +14,9 @@ const AdminPage = ({
   adminPath: string;
   config: CmsConfig;
   previewStyles: Array<string | [string] | [string, { raw: boolean }]>;
+  /** Array of module ID and filename tuples present only at build time. */
   assets?: [id: string, filename: string][];
-}) => {
+}) {
   const imports: string[] = [];
   const styles: string[] = [];
 
@@ -63,7 +64,7 @@ const AdminPage = ({
   <body></body>
   </html>
   `;
-};
+}
 
 export default function AdminDashboardPlugin({
   adminPath,
@@ -90,6 +91,7 @@ export default function AdminDashboardPlugin({
   return {
     name: 'vite-plugin-netlify-cms-admin-dashboard',
 
+    /** Build-only Rollup hook. */
     options(options) {
       let { input } = options;
       if (
@@ -106,6 +108,7 @@ export default function AdminDashboardPlugin({
       return { ...options, input };
     },
 
+    /** Dev-only Vite hook. */
     configureServer({ transformIndexHtml, middlewares }) {
       middlewares.use(async (req, res, next) => {
         if (req.url === adminPath || req.url === adminPath + '/') {
