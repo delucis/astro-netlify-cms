@@ -180,20 +180,32 @@ function generateImportMap({
 }
 
 /**
- * Extract assets in the import map from Rollup’s bundle.
+ * Extract assets defined in the import map from Rollup’s bundle.
  */
 function collectBundleAssets(
   bundle: OutputBundle,
   importMap: ImportMap
 ): [id: string, filename: string][] {
   const stripExtension = (filename: string) => filename.split('.')[0];
+  /** Map of module paths to module IDs like `{ 'src/styles/blog.css': 'style__1', ... }` */
+  const importTargets = new Map<string, string>(
+    Object.entries(importMap).map(([id, target]) => [
+      target.replace(/^\//, ''), // strip leading slash
+      id,
+    ])
+  );
+
   return Object.values(bundle)
-    .filter(
-      ({ name, fileName }) =>
+    .filter(({ name, fileName }) => {
+      return (
         !!name &&
-        stripExtension(name) in importMap &&
+        (stripExtension(name) in importMap || importTargets.has(name)) &&
         // Filter out non-CSS `style__` assets (a tiny JS file seems to get built for each)
         (!name.startsWith('style__') || fileName.endsWith('.css'))
-    )
-    .map(({ name, fileName }) => [stripExtension(name!), fileName]);
+      );
+    })
+    .map(({ name, fileName }) => [
+      importTargets.get(name) || stripExtension(name!),
+      fileName,
+    ]);
 }
