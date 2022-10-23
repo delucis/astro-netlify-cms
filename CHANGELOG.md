@@ -1,5 +1,13 @@
 # astro-netlify-cms
 
+## 0.3.0
+
+### Minor Changes
+
+- [#30](https://github.com/delucis/astro-netlify-cms/pull/30) [`6757440`](https://github.com/delucis/astro-netlify-cms/commit/6757440b968332f0b1dc6a52ee70a6c1852f7b15) Thanks [@delucis](https://github.com/delucis)! - Refactor to use Astro’s built-in `injectRoute` helper to add the admin dashboard.
+
+  Significantly simplifies the Vite plugin logic and should make future improvements easier to implement.
+
 ## 0.2.5
 
 ### Patch Changes
