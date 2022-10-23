@@ -22,10 +22,26 @@ export default function NetlifyCMS({
   config: cmsConfig,
   previewStyles = [],
 }: NetlifyCMSOptions) {
+  if (!adminPath.startsWith('/')) {
+    throw new Error(
+      '`adminPath` option must be a root-relative pathname, starting with "/", got "' +
+        adminPath +
+        '"'
+    );
+  }
+  if (adminPath.endsWith('/')) {
+    adminPath = adminPath.slice(0, -1);
+  }
+
   const NetlifyCMSIntegration: AstroIntegration = {
     name: 'netlify-cms',
     hooks: {
-      'astro:config:setup': ({ config, injectScript, updateConfig }) => {
+      'astro:config:setup': ({
+        config,
+        injectRoute,
+        injectScript,
+        updateConfig,
+      }) => {
         const newConfig: AstroUserConfig = {
           // Default to the URL provided by Netlify when building there. See:
           // https://docs.netlify.com/configure-builds/environment-variables/#deploy-urls-and-metadata
@@ -34,7 +50,6 @@ export default function NetlifyCMS({
             plugins: [
               ...(config.vite?.plugins || []),
               AdminDashboard({
-                adminPath,
                 config: cmsConfig,
                 previewStyles,
               }),
@@ -43,11 +58,17 @@ export default function NetlifyCMS({
         };
         updateConfig(newConfig);
 
+        injectRoute({
+          pattern: adminPath,
+          entryPoint: 'astro-netlify-cms/admin-dashboard.astro',
+        });
+
         injectScript(
           'page',
           `import { initIdentity } from '${widgetPath}'; initIdentity('${adminPath}')`
         );
       },
+
       'astro:server:start': () => {
         const proxy = spawn('netlify-cms-proxy-server', {
           stdio: 'inherit',
