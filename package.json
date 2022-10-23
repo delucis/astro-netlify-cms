@@ -11,7 +11,8 @@
     ".": "./dist/index.js",
     "./cms": "./dist/cms.js",
     "./identity-widget": "./dist/identity-widget.js",
-    "./vite-plugin-admin-dashboard": "./dist/vite-plugin-admin-dashboard.js"
+    "./vite-plugin-admin-dashboard": "./dist/vite-plugin-admin-dashboard.js",
+    "./admin-dashboard.astro": "./admin-dashboard.astro"
   },
   "types": "./dist/index.d.ts",
   "scripts": {
