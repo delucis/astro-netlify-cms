@@ -1,5 +1,11 @@
 # astro-netlify-cms
 
+## 0.3.1
+
+### Patch Changes
+
+- [`bd64e05`](https://github.com/delucis/astro-netlify-cms/commit/bd64e057e5df57f8e1b494336a98617fb239f5ac) Thanks [@delucis](https://github.com/delucis)! - Upgrade React dependencies
+
 ## 0.3.0
 
 ### Minor Changes
