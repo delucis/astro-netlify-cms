@@ -39,6 +39,6 @@
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.6",
     "@changesets/cli": "^2.24.4",
-    "astro": "^1.1.3"
+    "astro": "^1.5.2"
   }
 }
