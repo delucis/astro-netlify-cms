@@ -11,6 +11,12 @@
       import initCMS from './dist/cms';
       initCMS(options);
     </script>
+    <style is:global>
+      /* Workaround for https://github.com/netlify/netlify-cms/issues/5092 */
+      [data-slate-editor] {
+        -webkit-user-modify: read-write !important;
+      }
+    </style>
   </head>
   <body></body>
 </html>
