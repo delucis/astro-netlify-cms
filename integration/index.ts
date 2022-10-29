@@ -19,7 +19,7 @@ interface NetlifyCMSOptions {
 }
 
 export default function NetlifyCMS({
-  disableIdentityWidgetInjection = false;
+  disableIdentityWidgetInjection = false,
   adminPath = '/admin',
   config: cmsConfig,
   previewStyles = [],
