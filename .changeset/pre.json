@@ -1,0 +1,8 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "astro-netlify-cms": "0.3.1"
+  },
+  "changesets": []
+}
