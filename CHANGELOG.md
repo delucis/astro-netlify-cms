@@ -1,5 +1,15 @@
 # astro-netlify-cms
 
+## 0.3.2
+
+### Patch Changes
+
+- [#33](https://github.com/delucis/astro-netlify-cms/pull/33) [`d62b891`](https://github.com/delucis/astro-netlify-cms/commit/d62b8917f78ba7520c32ba0ba6bd32d818183c28) Thanks [@Marocco2](https://github.com/Marocco2)! - Add `disableIdentityWidgetInjection` option
+
+- [#36](https://github.com/delucis/astro-netlify-cms/pull/36) [`c508be4`](https://github.com/delucis/astro-netlify-cms/commit/c508be466b0c46dcd9bc6897045e0b90f173b9ab) Thanks [@delucis](https://github.com/delucis)! - Fix an issue in some browsers with the rich text editor.
+
+  Adds the workaround documented in [netlify/netlify-cms#5092](https://github.com/netlify/netlify-cms/issues/5092) to the admin dashboard.
+
 ## 0.3.2-next.0
 
 ### Patch Changes
