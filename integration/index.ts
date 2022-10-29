@@ -12,9 +12,9 @@ interface NetlifyCMSOptions {
    * Path at which the Netlify CMS admin dashboard should be served.
    * @default '/admin'
    */
-  disableIdentityWidgetInjection?: boolean;
   adminPath?: string;
   config: Omit<CmsConfig, 'load_config_file' | 'local_backend'>;
+  disableIdentityWidgetInjection?: boolean;
   previewStyles?: PreviewStyle[];
 }
 
