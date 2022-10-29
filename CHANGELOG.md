@@ -1,5 +1,11 @@
 # astro-netlify-cms
 
+## 0.3.2-next.0
+
+### Patch Changes
+
+- [#33](https://github.com/delucis/astro-netlify-cms/pull/33) [`d62b891`](https://github.com/delucis/astro-netlify-cms/commit/d62b8917f78ba7520c32ba0ba6bd32d818183c28) Thanks [@Marocco2](https://github.com/Marocco2)! - Add `disableIdentityWidgetInjection` option
+
 ## 0.3.1
 
 ### Patch Changes
