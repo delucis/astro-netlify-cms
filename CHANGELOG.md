@@ -1,5 +1,11 @@
 # astro-netlify-cms
 
+## 0.3.3
+
+### Patch Changes
+
+- [#38](https://github.com/delucis/astro-netlify-cms/pull/38) [`9b2802c`](https://github.com/delucis/astro-netlify-cms/commit/9b2802cb1727d9e1e2f695ad1631c71af9bb9a52) Thanks [@delucis](https://github.com/delucis)! - Restart Netlify CMS proxy server when astro.config reloads
+
 ## 0.3.2
 
 ### Patch Changes
