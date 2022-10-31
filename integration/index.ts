@@ -35,6 +35,8 @@ export default function NetlifyCMS({
     adminPath = adminPath.slice(0, -1);
   }
 
+  let proxy: ReturnType<typeof spawn>;
+
   const NetlifyCMSIntegration: AstroIntegration = {
     name: 'netlify-cms',
     hooks: {
@@ -73,12 +75,16 @@ export default function NetlifyCMS({
       },
 
       'astro:server:start': () => {
-        const proxy = spawn('netlify-cms-proxy-server', {
+        proxy = spawn('netlify-cms-proxy-server', {
           stdio: 'inherit',
           // Run in shell on Windows to make sure the npm package can be found.
           shell: process.platform === 'win32',
         });
         process.on('exit', () => proxy.kill());
+      },
+
+      'astro:server:done': () => {
+        proxy.kill();
       },
     },
   };
