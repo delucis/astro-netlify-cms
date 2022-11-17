@@ -1,5 +1,11 @@
 # astro-netlify-cms
 
+## 0.3.4
+
+### Patch Changes
+
+- [#41](https://github.com/delucis/astro-netlify-cms/pull/41) [`7e53467`](https://github.com/delucis/astro-netlify-cms/commit/7e53467096dad33bd2c15f060f3c4c4ad03a7a1e) Thanks [@dependabot](https://github.com/apps/dependabot)! - Bump loader-utils from 1.4.0 to 1.4.2
+
 ## 0.3.3
 
 ### Patch Changes
