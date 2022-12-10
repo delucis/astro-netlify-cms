@@ -46,6 +46,7 @@ export default function NetlifyCMS({
         injectScript,
         updateConfig,
       }) => {
+        const identityWidgetScript = `import { initIdentity } from '${widgetPath}'; initIdentity('${adminPath}');`;
         const newConfig: AstroUserConfig = {
           // Default to the URL provided by Netlify when building there. See:
           // https://docs.netlify.com/configure-builds/environment-variables/#deploy-urls-and-metadata
@@ -56,6 +57,9 @@ export default function NetlifyCMS({
               AdminDashboard({
                 config: cmsConfig,
                 previewStyles,
+                identityWidget: disableIdentityWidgetInjection
+                  ? identityWidgetScript
+                  : '',
               }),
             ],
           },
@@ -66,11 +70,9 @@ export default function NetlifyCMS({
           pattern: adminPath,
           entryPoint: 'astro-netlify-cms/admin-dashboard.astro',
         });
+
         if (!disableIdentityWidgetInjection) {
-          injectScript(
-            'page',
-            `import { initIdentity } from '${widgetPath}'; initIdentity('${adminPath}')`
-          );
+          injectScript('page', identityWidgetScript);
         }
       },
 
