@@ -116,7 +116,9 @@ You can provide URLs to external CSS stylesheets (Google Fonts for example), pat
 ```js
 previewStyles: [
   // Path to a local CSS file, relative to your project’s root directory
-  'src/styles/main.css',
+  '/src/styles/main.css',
+  // An npm module identifier
+  '@fontsource/roboto',
   // A URL to an externally hosted CSS file
   'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap',
   // Raw CSS!
