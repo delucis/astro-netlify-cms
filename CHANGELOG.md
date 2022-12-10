@@ -1,5 +1,11 @@
 # astro-netlify-cms
 
+## 0.3.5
+
+### Patch Changes
+
+- [#46](https://github.com/delucis/astro-netlify-cms/pull/46) [`cdbf7d6`](https://github.com/delucis/astro-netlify-cms/commit/cdbf7d63df2bbb1b65c661e87f93369f3977725a) Thanks [@delucis](https://github.com/delucis)! - Include identity widget on admin route even when `disableIdentityWidgetInjection` is set to `true`
+
 ## 0.3.4
 
 ### Patch Changes
