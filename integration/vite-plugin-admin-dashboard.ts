@@ -22,7 +22,7 @@ function generateVirtualConfigModule({
       styles.push(JSON.stringify([style, opts]));
     } else {
       const name = `style__${index}`;
-      imports.push(`import ${name} from '/${style}?raw';`);
+      imports.push(`import ${name} from '${style}?raw';`);
       styles.push(`[${name}, { raw: true }]`);
     }
   });
