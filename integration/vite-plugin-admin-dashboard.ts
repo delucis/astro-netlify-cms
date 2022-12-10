@@ -8,9 +8,11 @@ const resolvedVirtualModuleId = '\0' + virtualModuleId;
 function generateVirtualConfigModule({
   config,
   previewStyles = [],
+  identityWidget,
 }: {
   config: CmsConfig;
   previewStyles: Array<string | [string] | [string, { raw: boolean }]>;
+  identityWidget: string;
 }) {
   const imports: string[] = [];
   const styles: string[] = [];
@@ -29,6 +31,7 @@ function generateVirtualConfigModule({
 
   return `${imports.join('\n')}
 import * as NCMS from 'netlify-cms-app';
+${identityWidget}
 export default {
   cms: NCMS,
   config: JSON.parse('${JSON.stringify(config)}'),
@@ -40,9 +43,11 @@ export default {
 export default function AdminDashboardPlugin({
   config,
   previewStyles,
+  identityWidget,
 }: {
   config: Omit<CmsConfig, 'load_config_file' | 'local_backend'>;
   previewStyles: PreviewStyle[];
+  identityWidget: string;
 }): Plugin {
   return {
     name: 'vite-plugin-netlify-cms-admin-dashboard',
@@ -53,7 +58,11 @@ export default function AdminDashboardPlugin({
 
     load(id) {
       if (id === resolvedVirtualModuleId)
-        return generateVirtualConfigModule({ config, previewStyles });
+        return generateVirtualConfigModule({
+          config,
+          previewStyles,
+          identityWidget,
+        });
     },
   };
 }

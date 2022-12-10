@@ -131,7 +131,7 @@ previewStyles: [
 **Type:** `boolean`  
 **Default:** `false`
 
-By default, `astro-netlify-cms` injects Netlify’s [Identity Widget](https://github.com/netlify/netlify-identity-widget) across your site to enable authentication. If you are handling this in some other way, you can disable this by setting `disableIdentityWidgetInjection: true`.
+By default, `astro-netlify-cms` injects Netlify’s [Identity Widget](https://github.com/netlify/netlify-identity-widget) across your site to enable authentication. If you only want to inject the widget on the admin route, you can set `disableIdentityWidgetInjection: true`.
 
 ## To-do
 
