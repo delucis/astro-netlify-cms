@@ -133,6 +133,9 @@ previewStyles: [
 
 By default, `astro-netlify-cms` injects Netlify’s [Identity Widget](https://github.com/netlify/netlify-identity-widget) across your site to enable authentication. If you only want to inject the widget on the admin route, you can set `disableIdentityWidgetInjection: true`.
 
+## Using Astro `react()` integration?
+You can leave it out of the integrations array in your `astro.config.mjs`, it is exported alongside `NetlifyCMS()` out of the box.
+
 ## To-do
 
 - Support registering custom preview components to render content as it is edited.
