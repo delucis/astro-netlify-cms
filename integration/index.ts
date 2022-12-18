@@ -1,9 +1,8 @@
 import type { AstroIntegration, AstroUserConfig } from 'astro';
 import type { CmsConfig } from 'netlify-cms-core';
 import { spawn } from 'node:child_process';
-import react from '@astrojs/react';
-import AdminDashboard from './vite-plugin-admin-dashboard.js';
 import type { PreviewStyle } from './types.js';
+import AdminDashboard from './vite-plugin-admin-dashboard.js';
 
 const widgetPath = 'astro-netlify-cms/identity-widget';
 
@@ -90,5 +89,5 @@ export default function NetlifyCMS({
       },
     },
   };
-  return [react(), NetlifyCMSIntegration];
+  return NetlifyCMSIntegration;
 }
