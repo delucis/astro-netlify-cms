@@ -1,5 +1,11 @@
 # astro-netlify-cms
 
+## 0.5.1
+
+### Patch Changes
+
+- [#56](https://github.com/delucis/astro-netlify-cms/pull/56) [`b5cb7aa`](https://github.com/delucis/astro-netlify-cms/commit/b5cb7aac1d243af7a4e9814be1f47158e28a897c) Thanks [@dependabot](https://github.com/apps/dependabot)! - Bump json5 and react-hot-loader
+
 ## 0.5.0
 
 ### Minor Changes
