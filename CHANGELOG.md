@@ -1,5 +1,11 @@
 # astro-netlify-cms
 
+## 0.5.2
+
+### Patch Changes
+
+- [`8f23e86`](https://github.com/delucis/astro-netlify-cms/commit/8f23e8667b591838aff456649d7bc059072dd9b0) Thanks [@delucis](https://github.com/delucis)! - Update peer dependencies to support Astro v2
+
 ## 0.5.1
 
 ### Patch Changes
