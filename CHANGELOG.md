@@ -1,5 +1,11 @@
 # astro-netlify-cms
 
+## 0.5.3
+
+### Patch Changes
+
+- [#63](https://github.com/delucis/astro-netlify-cms/pull/63) [`e3884e3`](https://github.com/delucis/astro-netlify-cms/commit/e3884e303ba49fd70fb90fc412715de6dec6cfbd) Thanks [@dependabot](https://github.com/apps/dependabot)! - Bump simple-git from 3.15.1 to 3.16.0
+
 ## 0.5.2
 
 ### Patch Changes
