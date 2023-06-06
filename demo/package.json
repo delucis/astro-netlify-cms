@@ -9,7 +9,7 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "astro": "^1.5.2",
+    "astro": "^1.9.2",
     "astro-netlify-cms": "file:../"
   }
 }
