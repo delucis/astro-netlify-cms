@@ -35,7 +35,7 @@
     "react-dom": "^17.0.2"
   },
   "peerDependencies": {
-    "astro": "^1.0.0 || ^2.0.0-beta"
+    "astro": "^1.0.0 || ^2.0.0-beta || ^3.0.0-beta"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.7",
