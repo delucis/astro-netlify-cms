@@ -1,5 +1,11 @@
 # astro-netlify-cms
 
+## 0.5.4
+
+### Patch Changes
+
+- [#76](https://github.com/delucis/astro-netlify-cms/pull/76) [`2e24122`](https://github.com/delucis/astro-netlify-cms/commit/2e241229a38d7aa783ea9df462e66b8c15ffa963) Thanks [@Marocco2](https://github.com/Marocco2)! - Support for Astro v3
+
 ## 0.5.3
 
 ### Patch Changes
